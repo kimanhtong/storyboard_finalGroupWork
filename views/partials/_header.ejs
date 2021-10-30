@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-light bg-warning">
+    <a class="navbar-brand" href="/">StoryBoard - The power of collaborative imagination</a>
+    <% if (user) { %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <% } %>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <% if (user) { %>
+      <div class="navbar-nav">
+        <a class="nav-item nav-link" href = "/mystories">My Stories</a>
+        <a class="nav-item nav-link" href="/newstory">Create New Story</a>
+      </div>
+      <% } %>
+    </div>
+    <% if (!user) { %>
+      <div>
+        <a class="btn btn-primary" href="/login">Login</a>
+      </div>
+    <% } else { %>
+    <form class="form-inline" action="/logout" method="POST">
+      <div>
+        <%= user.name %>
+        <button type="submit" class="btn btn-outline-primary">Logout</button>
+      </div>
+    </form>
+    <% } %>
+  </nav>
+</header>
